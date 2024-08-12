@@ -15,3 +15,19 @@ def progress_bar():
 with st.spinner('Waiting for data'):
     my_bar = st.progress(0)
     progress_bar()
+
+# info
+st.subheader('st.info')
+st.info('Info about the app status')
+
+st.subheader('st.success')
+st.success('This is a success')
+
+st.subheader('st.warning')
+st.warning('Watch out!')
+
+st.subheader('st.error')
+st.error('Uh oh!')
+
+time.sleep(2)
+st.balloons()
