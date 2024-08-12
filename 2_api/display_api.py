@@ -17,3 +17,15 @@ st.write(df)
 
 # display numpy array
 st.write(np.array([2,4,6,8]))
+
+st.write("Magic commands")
+
+df1 = pd.DataFrame({
+    'column_1': [1,2,3,4]
+})
+
+df1
+x = 10
+x
+x = 20
+x
