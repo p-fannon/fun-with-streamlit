@@ -60,9 +60,8 @@ st.markdown("""
             
     To quickly turn a URL or email address into a link, enclose it in angle brackets.
             
-    <https://www.datascienceanywhere.org>
-            
-    <srikanthdakoju@gmail.com>
+    * <https://www.datascienceanywhere.org>      
+    * <srikanthdakoju@gmail.com>
             
     ## Images
             
