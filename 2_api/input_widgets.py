@@ -17,3 +17,33 @@ button = st.button('Display random 5 rows')
 if button:
     sample = display_data_random(data)
     st.dataframe(sample)
+
+# checkbox
+st.markdown('---')
+st.subheader('st.checkbox')
+agree = st.checkbox('I agree to T&C') # returns boolean value
+st.write('checkbox status = ', agree)
+
+# multiple checkbox
+with st.container():
+    st.info('What tech you know')
+
+    python = st.checkbox('Python')
+    data_science = st.checkbox('Data Science')
+    ai_ml = st.checkbox('AI/ML')
+    android = st.checkbox('Android')
+    react = st.checkbox('React')
+    java = st.checkbox('Java')
+    javascript = st.checkbox('Javascript')
+    tech_button = st.button('Submit')
+    if tech_button:
+        tech_dict = {
+            'Python': python,
+            'Data Science': data_science,
+            'AI/ML': ai_ml,
+            'Android': android,
+            'React': react,
+            'Java': java,
+            'Javascript': javascript
+        }
+        st.json(tech_dict)
