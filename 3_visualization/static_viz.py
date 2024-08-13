@@ -107,3 +107,41 @@ ax.legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
 st.pyplot(fig)
 
 st.dataframe(avg_total_bill)
+
+with st.container():
+    # 1. include all categorical features (multiselect)
+    # 2. bar, area, line (selectbox)
+    # 3. stacked (radio)
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        group_cols = st.multiselect('Select the features', cat_cols, cat_cols[0])
+        features_to_groupby = group_cols
+        n_features = len(features_to_groupby)
+    with col2:
+        chart_type = st.selectbox('Select chart type', ('bar', 'area', 'line'))
+    with col3:
+        stack_option = st.radio('Stacked?', ('Yes', 'No'))
+        if stack_option == 'Yes':
+            stacked = True
+        else:
+            stacked = False
+    
+    feature = ['total_bill']
+    select_cols = feature + features_to_groupby
+    avg_total_bill = df[select_cols].groupby(features_to_groupby).mean()
+    if n_features > 1:
+        for i in range(n_features - 1):
+            avg_total_bill = avg_total_bill.unstack()
+
+    avg_total_bill.fillna(0, inplace=True)
+
+    # Visualization
+    fig, ax = plt.subplots()
+    avg_total_bill.plot(kind=chart_type, ax=ax, stacked=stacked)
+    ax.legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
+    ax.set_ylabel('Avg. Total Bill')
+    st.pyplot(fig)
+
+with st.expander('Click here to view values'):
+    st.dataframe(avg_total_bill)
