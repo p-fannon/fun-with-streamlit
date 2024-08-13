@@ -100,3 +100,18 @@ with st.container():
             "about": describe
         }
         st.json(person_dict)
+
+# file uploader
+st. markdown('---')
+st.subheader('st.file_uploader')
+
+uploaded_file = st.file_uploader('Choose a file')
+save_button = st.button('Save file')
+if save_button:
+    if uploaded_file is not None:
+        with open(os.path.join('./save_folder', uploaded_file.name), mode='wb') as f:
+            f.write(uploaded_file.getbuffer())
+
+        st.success('File uploaded successfully')
+    else:
+        st.warning('No file selected')
