@@ -74,3 +74,9 @@ options = st.multiselect('What kind of movies do you like?',
                ['Horror', 'Comedy', 'Action', 'Drama', 'Sci-Fi'])
 
 st.write('You selected ', options)
+
+# slider
+st. markdown('---')
+st.subheader('st.slider')
+loan = st.slider('What is loan amount you are applying for?', 0, 100000, 1000, 1000) # prompt, minimum, maximum, default, step
+st.write('Loan amount = ', loan)
