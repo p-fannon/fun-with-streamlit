@@ -56,3 +56,12 @@ radio_button = st.radio('Your favorite color?',
                         ('white', 'black', 'red', 'orange', 'yellow', 'green', 'blue', 'purple'))
 
 st.write('Your favorite color is ', radio_button)
+
+# selectbox
+st.markdown('---')
+st.subheader('st.selectbox')
+
+select_box = st.selectbox('What skill do you want to learn most?',
+                          ('Java', 'C', 'C++', 'Javascript', 'HTML', 'Other'))
+
+st.write('You selected ', select_box)
