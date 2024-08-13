@@ -88,3 +88,22 @@ with st.container():
         sns.histplot(x='total_bill', hue='sex', data=df, ax=ax)
 
     st.pyplot(fig)
+
+# 3. Find distribution of average total_bill across each day by male and female
+# bar, area, line
+st.markdown('---')
+st.write('Find distribution of average total_bill across each day by male and female')
+
+features_to_groupby = ['day', 'sex']
+feature = ['total_bill']
+select_cols = feature + features_to_groupby
+avg_total_bill = df[select_cols].groupby(features_to_groupby).mean()
+avg_total_bill = avg_total_bill.unstack()
+
+# Visualization
+fig, ax = plt.subplots()
+avg_total_bill.plot(kind='bar', ax=ax)
+ax.legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
+st.pyplot(fig)
+
+st.dataframe(avg_total_bill)
