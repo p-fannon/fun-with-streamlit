@@ -80,3 +80,23 @@ st. markdown('---')
 st.subheader('st.slider')
 loan = st.slider('What is loan amount you are applying for?', 0, 100000, 1000, 1000) # prompt, minimum, maximum, default, step
 st.write('Loan amount = ', loan)
+
+# text input
+st. markdown('---')
+st.subheader('st.text_input, st.number_input, st.date_input')
+
+with st.container():
+    name = st.text_input('Enter your name')
+    age = st.number_input('Enter your age', min_value=0, max_value=150, value=25, step=1)
+    describe = st.text_area('Describe yourself', height=150)
+    dob = st.date_input('Select your birthday')
+
+    submit_button = st.button('Submit button')
+    if submit_button:
+        person_dict = {
+            "name": name,
+            "age": age,
+            "dob": dob,
+            "about": describe
+        }
+        st.json(person_dict)
