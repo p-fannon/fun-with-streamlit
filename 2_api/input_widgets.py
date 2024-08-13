@@ -47,3 +47,12 @@ with st.container():
             'Javascript': javascript
         }
         st.json(tech_dict)
+
+# radio button
+st.markdown('---')
+st.subheader('st.radio')
+
+radio_button = st.radio('Your favorite color?',
+                        ('white', 'black', 'red', 'orange', 'yellow', 'green', 'blue', 'purple'))
+
+st.write('Your favorite color is ', radio_button)
