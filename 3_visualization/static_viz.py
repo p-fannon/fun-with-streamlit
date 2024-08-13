@@ -74,7 +74,17 @@ with st.container():
 st.markdown('---')
 with st.container():
     st.write('Find distribution of male and female spent')
+    # box, violin, kdeplot, histogram
+    chart = ("box", "violin", "kdeplot", "histogram")
+    chart_selection = st.selectbox('Select the chart type', chart)
     fig, ax = plt.subplots()
-    sns.boxplot(x = 'sex', y='total_bill', data=df, ax=ax)
+    if chart_selection == 'box':
+        sns.boxplot(x = 'sex', y='total_bill', data=df, ax=ax)
+    elif chart_selection == 'violin':
+        sns.violinplot(x = 'sex', y='total_bill', data=df, ax=ax)
+    elif chart_selection == 'kdeplot':
+        sns.kdeplot(x=df['total_bill'], hue=df['sex'], ax=ax, shade=True)
+    else:
+        sns.histplot(x='total_bill', hue='sex', data=df, ax=ax)
 
     st.pyplot(fig)
