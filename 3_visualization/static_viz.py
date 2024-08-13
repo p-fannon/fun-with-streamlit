@@ -40,3 +40,41 @@ with st.container():
 
     with st.expander('Click here to display value counts'):
         st.dataframe(value_counts)
+
+# streamlit widgets and charts
+
+data_types = df.dtypes
+cat_cols = tuple(data_types[data_types == 'object'].index)
+st.markdown('---')
+with st.container():
+    feature = st.selectbox('Select the feature',
+                           cat_cols)
+
+    value_counts = df[feature].value_counts()
+    col1, col2 = st.columns(2)
+
+    with col1:
+        # draw pie chart
+        st.subheader('Pie chart')
+        fig, ax = plt.subplots()
+        ax.pie(value_counts, autopct="%0.2f%%", labels=value_counts.index)
+        st.pyplot(fig)
+
+    with col2:
+        # draw bar plot
+        st.subheader('Bar chart')
+        fig, ax = plt.subplots()
+        ax.bar(value_counts.index, value_counts)
+        st.pyplot(fig)
+
+    with st.expander('Click here to display value counts'):
+        st.dataframe(value_counts)
+
+# 2. Find distribution of male and female spent (boxplot or kdeplot)
+st.markdown('---')
+with st.container():
+    st.write('Find distribution of male and female spent')
+    fig, ax = plt.subplots()
+    sns.boxplot(x = 'sex', y='total_bill', data=df, ax=ax)
+
+    st.pyplot(fig)
