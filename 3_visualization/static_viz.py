@@ -145,3 +145,13 @@ with st.container():
 
 with st.expander('Click here to view values'):
     st.dataframe(avg_total_bill)
+
+# 4. Find the relation between total_bill and tip on time (scatter plot)
+st.markdown('---')
+st.write('Find the relation between total_bill and tip on time')
+
+fig, ax = plt.subplots()
+hue_type = st.selectbox('Select the feature to hue', cat_cols)
+
+sns.scatterplot(x='total_bill', y='tip', hue=hue_type, ax=ax, data=df)
+st.pyplot(fig)
