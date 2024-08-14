@@ -23,4 +23,17 @@ fig = px.histogram(data_frame=data, x='total_bill', color='sex')
 st.plotly_chart(fig)
 
 # 3. Draw histogram for total bill and color by (sex, smoker, day, time)
+
+st.markdown('---')
+st.subheader('Draw histogram for total bill and color by (sex, smoker, day, time)')
+select = st.selectbox('Select the category to color', ('sex', 'smoker', 'day', 'time'))
+fig = px.histogram(data_frame=data, x='total_bill', color=select)
+st.plotly_chart(fig)
+
 # 4. Draw Scatter plot between total_bill and tips and color by 
+
+st.markdown('---')
+st.subheader("Draw Scatter plot between total_bill and tips and color by ('sex', 'smoker', 'day', 'time')")
+color_option = st.selectbox('Select a category to color', ('sex', 'smoker', 'day', 'time'))
+fig = px.scatter(data_frame=data, x='total_bill', y='tip', color=color_option)
+st.plotly_chart(fig)
