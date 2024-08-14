@@ -37,3 +37,10 @@ st.subheader("Draw Scatter plot between total_bill and tips and color by ('sex',
 color_option = st.selectbox('Select a category to color', ('sex', 'smoker', 'day', 'time'))
 fig = px.scatter(data_frame=data, x='total_bill', y='tip', color=color_option)
 st.plotly_chart(fig)
+
+# 5. Sunburst Chart on features ('sex','day','smoker','time')
+st.markdown('---')
+st.subheader("Sunburst Chart on features ('sex','day'pip,'smoker','time')")
+path = st.multiselect('Select the categorical features path', ('sex','day','smoker','time'))
+fig = px.sunburst(data_frame=data, path=path)
+st.plotly_chart(fig)
